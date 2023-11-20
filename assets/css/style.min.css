@@ -839,6 +839,13 @@ blockquote-title {
 .footer-area {
   background-color: #f8f9fc;
 }
+.tel-no1 {
+    
+    font-size: 20px;
+    font-weight: bold;
+    font-style: oblique;
+     
+  }
 .widget-item {
   margin-top: 38px;
 }
