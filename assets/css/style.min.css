@@ -840,12 +840,10 @@ blockquote-title {
   background-color: #f8f9fc;
 }
 .tel-no1 {
-    
-    font-size: 20px;
-    font-weight: bold;
-    font-style: oblique;
-     
-  }
+  font-size: 20px;
+  font-weight: bold;
+  font-style: oblique;
+}
 .widget-item {
   margin-top: 38px;
 }
@@ -3052,4 +3050,30 @@ blockquote-title {
 .pricing-plan-item:hover {
   -webkit-transform: translateY(-10px);
   transform: translateY(-10px);
+}
+
+.header-area-top {
+  padding: 110px 0 130px;
+  position: relative;
+  z-index: 1;
+}
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .header-area-top {
+    padding: 90px 0 135px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .header-area-top {
+    padding: 60px 0 135px;
+  }
+}
+.header-area-top:before {
+  background-color: rgba(16, 19, 36, 0.9);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
