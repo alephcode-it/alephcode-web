@@ -2716,6 +2716,18 @@ blockquote-title {
   height: 100%;
   width: 100%;
 }
+
+.team-area-wrapper1:before {
+  background-color: rgba(16, 19, 36, 0.9);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
 .team-page-area-wrapper .team-mem-item {
   margin-top: 30px;
   -webkit-transition: 0.4s;
