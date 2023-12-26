@@ -492,7 +492,8 @@ blockquote-title {
   margin-right: 0;
 }
 .main-menu > li > a {
-  color: #ffffff;
+  color: #bbd6e7;
+  font-weight: bold;
   display: block;
   line-height: 1;
   letter-spacing: 1.62px;
