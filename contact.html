@@ -116,14 +116,13 @@
                                 <h3>Send us a Message</h3>
 
                                 <div class="contact-form-wrap">
-                                    <form action="https://htmlmail.hasthemes.com/raju/businex-mail.php" method="post"
-                                        id="contact-form">
+                                    <form onsubmit="sendEmail()" method="post" id="contact-form">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="single-input-item">
                                                     <label>
-                                                        <input type="text" name="first_name" placeholder="First Name *"
-                                                            required />
+                                                        <input type="text" name="first_name" id="first_name"
+                                                            placeholder="First Name *" required />
                                                     </label>
                                                 </div>
                                             </div>
@@ -131,8 +130,8 @@
                                             <div class="col-md-6">
                                                 <div class="single-input-item">
                                                     <label>
-                                                        <input type="text" name="last_name" placeholder="Last Name *"
-                                                            required />
+                                                        <input type="text" name="last_name" id="last_name"
+                                                            placeholder="Last Name *" required />
                                                     </label>
                                                 </div>
                                             </div>
@@ -140,7 +139,7 @@
                                             <div class="col-md-6">
                                                 <div class="single-input-item">
                                                     <label>
-                                                        <input type="email" name="email_address"
+                                                        <input type="email" name="email_address" id="email_address"
                                                             placeholder="Email address *" required />
                                                     </label>
                                                 </div>
@@ -149,7 +148,8 @@
                                             <div class="col-md-6">
                                                 <div class="single-input-item">
                                                     <label>
-                                                        <input type="text" name="phone_no" placeholder="Your Phone" />
+                                                        <input type="text" name="phone_no" id="phone_no"
+                                                            placeholder="Your Phone" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -186,7 +186,7 @@
                                             <br>
                                             alephcode.it@gmail.com
                                             <br>
-                                            (+94) 775 696 330
+                                            (+94) 766 606 816
                                         </address>
                                     </div>
                                     <div class="member-social-icons mt-30">
@@ -202,6 +202,31 @@
                 </div>
             </div>
         </div>
+
+        <script src="https://smtpjs.com/v3/smtp.js">
+        </script>
+
+        <script>
+            function sendEmail() {
+                var email = document.getElementById('email_address').value;
+                var first_name = document.getElementById('first_name').value;
+                var last_name = document.getElementById('last_name').value;
+                var message = document.getElementById('con_message').value;
+                var phone_no = document.getElementById('phone_no').value;
+
+                Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "alephcode.it@gmail.com",
+                    Password: "20C26D7598D68748C06CFE300AE4D50920D2",
+                    To: 'alephcode.it@gmail.com',
+                    From: "alephcode.it@gmail.com",
+                    Subject: "Contact Message from : " + email,
+                    Body: "first_name" + first_name
+                }).then(
+                    message => alert(message)
+                );
+            }
+        </script>
         <!--== End Contact Page Area Wrapper ==-->
 
         <!--== Start Footer Area Wrapper ==-->
