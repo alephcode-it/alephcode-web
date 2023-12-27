@@ -116,7 +116,7 @@
                                 <h3>Send us a Message</h3>
 
                                 <div class="contact-form-wrap">
-                                    <form onsubmit="sendEmail()" method="post" id="contact-form">
+                                    <form onsubmit="sendEmail()" id="contact-form">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="single-input-item">
@@ -165,7 +165,7 @@
                                                     <button class="btn-outline">Send Message</button>
                                                 </div>
 
-                                                <div class="form-message"></div>
+                                                <div class="form-message" id="form-message"></div>
                                             </div>
                                         </div>
                                     </form>
@@ -214,6 +214,105 @@
                 var message = document.getElementById('con_message').value;
                 var phone_no = document.getElementById('phone_no').value;
 
+                var emailTemplate = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Informational Request</title>
+                <style>
+                    body {
+                        font-family: 'Arial', sans-serif;
+                        background-color: #f4f4f4;
+                        color: #333;
+                        padding: 20px;
+                    }
+
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        background-color: #fff;
+                        padding: 20px;
+                        border-radius: 5px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+
+                    h2 {
+                        color: #007BFF;
+                    }
+
+                    p {
+                        margin-bottom: 20px;
+                    }
+
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                    }
+
+                    th, td {
+                        padding: 12px;
+                        text-align: left;
+                        border-bottom: 1px solid #ddd;
+                    }
+
+                    th {
+                        background-color: #007BFF;
+                        color: #fff;
+                    }
+
+                    .success-message {
+                        color: green;
+                        font-weight: bold;
+                    }
+
+                    .error-message {
+                        color: red;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h2>Informational Request</h2>
+                    <p>A user has submitted a request for information. Please find the details below:</p>
+
+                    <table>
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>First Name</td>
+                            <td>${first_name}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td>${last_name}</td>
+                        </tr>
+                        <tr>
+                            <td>Email Address</td>
+                            <td>${email}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>${phone_no}</td>
+                        </tr>
+                        <tr>
+                            <td>Message</td>
+                            <td>${message}</td>
+                        </tr>
+                    </table>
+
+                    <p class="success-message">The informational request has been received successfully!</p>
+                </div>
+            </body>
+            </html>
+        `;
+
                 Email.send({
                     Host: "smtp.elasticemail.com",
                     Username: "alephcode.it@gmail.com",
@@ -221,9 +320,19 @@
                     To: 'alephcode.it@gmail.com',
                     From: "alephcode.it@gmail.com",
                     Subject: "Contact Message from : " + email,
-                    Body: "first_name" + first_name
+                    Body: emailTemplate
                 }).then(
-                    message => alert(message)
+                    function (message) {
+                        // Update the form-message div with the result of the email sending attempt
+                        var formMessage = document.getElementById('form-message');
+                        if (message === "OK") {
+                            formMessage.innerHTML = "Email sent successfully!";
+                            formMessage.style.color = "green";
+                        } else {
+                            formMessage.innerHTML = "Error sending email. Please try again.";
+                            formMessage.style.color = "red";
+                        }
+                    }
                 );
             }
         </script>
