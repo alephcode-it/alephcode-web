@@ -165,7 +165,7 @@
                                                     <button class="btn-outline">Send Message</button>
                                                 </div>
 
-                                                <div class="form-message" id="form-message"></div>
+                                                <div class="message-form" id="message-form"></div>
                                             </div>
                                         </div>
                                     </form>
@@ -184,7 +184,7 @@
                                             <br>
                                             https://alephcode.com
                                             <br>
-                                            alephcode.it@gmail.com
+                                            info@alephcode.com
                                             <br>
                                             (+94) 766 606 816
                                         </address>
@@ -324,18 +324,51 @@
                 }).then(
                     function (message) {
                         // Update the form-message div with the result of the email sending attempt
-                        var formMessage = document.getElementById('form-message');
+                        var formMessage = document.getElementById('message-form');
                         if (message === "OK") {
-                            formMessage.innerHTML = "Email sent successfully!";
-                            formMessage.style.color = "green";
-                        } else {
-                            formMessage.innerHTML = "Error sending email. Please try again.";
-                            formMessage.style.color = "red";
+                            if (message === "OK") {
+                                formMessage.innerHTML = `
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Success!</strong> Informational request sent successfully.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="hideFormMessage()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    `;
+                                clearForm();
+                            } else {
+                                formMessage.innerHTML = `
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error!</strong> Error processing informational request. Please investigate.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="hideFormMessage()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    `;
+
+                            }
                         }
                     }
                 );
             }
+
+
+            // Function to clear form fields
+            function clearForm() {
+                document.getElementById('first_name').value = '';
+                document.getElementById('last_name').value = '';
+                document.getElementById('email_address').value = '';
+                document.getElementById('phone_no').value = '';
+                document.getElementById('con_message').value = '';
+            }
+
+            function hideFormMessage() {
+                var formMessage = $('#message-form');
+                formMessage.empty(); // Empty the div content
+            }
         </script>
+
+
         <!--== End Contact Page Area Wrapper ==-->
 
         <!--== Start Footer Area Wrapper ==-->
