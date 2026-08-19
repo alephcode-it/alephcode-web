@@ -63,7 +63,13 @@
             background: #080b1a; color: #fff; border-radius: 8px;
             font-size: 14px; font-weight: 600; padding: 12px 22px;
         }
-        .contact-submit:hover { background: #182141; color: #fff; }
+        .contact-submit[disabled] { opacity: 0.75; cursor: wait; }
+        .contact-status { margin-top: 16px; padding: 12px 14px; border-radius: 8px; font-size: 14px; line-height: 1.5; }
+        .contact-status.is-info { background: #f8f9fc; color: #151515; border: 1px solid #eee; }
+        .contact-status.is-success { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+        .contact-status.is-warning { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+        .contact-status.is-error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+        .contact-honey { position: absolute; left: -9999px; height: 0; width: 0; overflow: hidden; }
         .contact-secure { display: inline-flex; align-items: center; gap: 6px; color: #5c6573; font-size: 12px; margin: 0; }
         .contact-secure i { font-size: 16px; color: #080b1a; }
         .contact-side { background: #080b1a; color: #c5cad3; display: flex; flex-direction: column; }
@@ -164,7 +170,15 @@
                         </div>
                     </div>
 
-                    <form id="contact-form" onsubmit="sendEmail(); return false;">
+                    <form id="contact-form" action="https://formsubmit.co/info@alephcode.com" method="POST" novalidate>
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" id="contact-next" value="https://alephcode.com/contact.html?sent=1">
+                        <input type="hidden" name="_subject" id="contact-mail-subject" value="AlephCode website enquiry">
+                        <input type="hidden" name="_replyto" id="contact-replyto" value="">
+                        <input type="hidden" name="name" id="contact-full-name" value="">
+                        <div class="contact-honey" aria-hidden="true">
+                            <label>Website <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+                        </div>
                         <div class="contact-grid">
                             <div class="contact-field">
                                 <label for="first_name">First Name <span class="req">*</span></label>
@@ -176,7 +190,7 @@
                             </div>
                             <div class="contact-field">
                                 <label for="email_address">Email Address <span class="req">*</span></label>
-                                <input type="email" name="email_address" id="email_address" placeholder="Enter your email address" required>
+                                <input type="email" name="email" id="email_address" placeholder="Enter your email address" required>
                             </div>
                             <div class="contact-field">
                                 <label for="phone_no">Phone Number</label>
@@ -206,12 +220,12 @@
                                 <input type="checkbox" id="contact_privacy" required>
                                 <span>I agree to the <a href="legal.html#privacy">Privacy Policy</a>. <span class="req">*</span></span>
                             </label>
-                            <button type="submit" class="contact-submit">
+                            <button type="submit" class="contact-submit" id="contact-submit">
                                 Send Message <i class="mdi mdi-send" aria-hidden="true"></i>
                             </button>
-                            <p class="contact-secure"><i class="mdi mdi-lock-outline" aria-hidden="true"></i> Your information is secure and confidential.</p>
+                            <p class="contact-secure"><i class="mdi mdi-shield-check-outline" aria-hidden="true"></i> Protected by reCAPTCHA. You will complete a short security check before the message is sent.</p>
                         </div>
-                        <div class="message-form" id="message-form"></div>
+                        <div id="message-form" aria-live="polite"></div>
                     </form>
                 </div>
 
@@ -310,188 +324,6 @@
         </div>
     </div>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script>
-        (function () {
-            var message = document.getElementById("con_message");
-            var count = document.getElementById("message-count");
-            if (message && count) {
-                message.addEventListener("input", function () {
-                    count.textContent = message.value.length + "/1000";
-                });
-            }
-        }());
-
-        function sendEmail() {
-            var email = document.getElementById('email_address').value;
-            var first_name = document.getElementById('first_name').value;
-            var last_name = document.getElementById('last_name').value;
-            var message = document.getElementById('con_message').value;
-            var phone_no = document.getElementById('phone_no').value;
-            var subjectEl = document.getElementById('contact_subject');
-            var subject = subjectEl ? subjectEl.value : '';
-
-            var emailTemplate = `
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Informational Request</title>
-                <style>
-                    body {
-                        font-family: 'Arial', sans-serif;
-                        background-color: #f4f4f4;
-                        color: #333;
-                        padding: 20px;
-                    }
-
-                    .container {
-                        max-width: 600px;
-                        margin: 0 auto;
-                        background-color: #fff;
-                        padding: 20px;
-                        border-radius: 5px;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    }
-
-                    h2 {
-                        color: #007BFF;
-                    }
-
-                    p {
-                        margin-bottom: 20px;
-                    }
-
-                    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        margin-top: 20px;
-                    }
-
-                    th, td {
-                        padding: 12px;
-                        text-align: left;
-                        border-bottom: 1px solid #ddd;
-                    }
-
-                    th {
-                        background-color: #007BFF;
-                        color: #fff;
-                    }
-
-                    .success-message {
-                        color: green;
-                        font-weight: bold;
-                    }
-
-                    .error-message {
-                        color: red;
-                        font-weight: bold;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="container">
-                    <h2>Informational Request</h2>
-                    <p>A user has submitted a request for information. Please find the details below:</p>
-
-                    <table>
-                        <tr>
-                            <th>Field</th>
-                            <th>Value</th>
-                        </tr>
-                        <tr>
-                            <td>First Name</td>
-                            <td>${first_name}</td>
-                        </tr>
-                        <tr>
-                            <td>Last Name</td>
-                            <td>${last_name}</td>
-                        </tr>
-                        <tr>
-                            <td>Email Address</td>
-                            <td>${email}</td>
-                        </tr>
-                        <tr>
-                            <td>Phone Number</td>
-                            <td>${phone_no}</td>
-                        </tr>
-                        <tr>
-                            <td>Subject</td>
-                            <td>${subject}</td>
-                        </tr>
-                        <tr>
-                            <td>Message</td>
-                            <td>${message}</td>
-                        </tr>
-                    </table>
-
-                    <p class="success-message">The informational request has been received successfully!</p>
-                </div>
-            </body>
-            </html>
-        `;
-
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "alephcode.it@gmail.com",
-                Password: "20C26D7598D68748C06CFE300AE4D50920D2",
-                To: 'alephcode.it@gmail.com',
-                From: "alephcode.it@gmail.com",
-                Subject: "Contact Message from : " + email,
-                Body: emailTemplate
-            }).then(
-                function (message) {
-                    var formMessage = document.getElementById('message-form');
-                    if (message === "OK") {
-                        if (message === "OK") {
-                            formMessage.innerHTML = `
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Success!</strong> Informational request sent successfully.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="hideFormMessage()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    `;
-                            clearForm();
-                        } else {
-                            formMessage.innerHTML = `
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Error!</strong> Error processing informational request. Please investigate.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="hideFormMessage()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    `;
-
-                        }
-                    }
-                }
-            );
-        }
-
-        function clearForm() {
-            document.getElementById('first_name').value = '';
-            document.getElementById('last_name').value = '';
-            document.getElementById('email_address').value = '';
-            document.getElementById('phone_no').value = '';
-            document.getElementById('con_message').value = '';
-            var subject = document.getElementById('contact_subject');
-            if (subject) { subject.selectedIndex = 0; }
-            var privacy = document.getElementById('contact_privacy');
-            if (privacy) { privacy.checked = false; }
-            var count = document.getElementById('message-count');
-            if (count) { count.textContent = '0/1000'; }
-        }
-
-        function hideFormMessage() {
-            var formMessage = $('#message-form');
-            formMessage.empty();
-        }
-    </script>
-
     <script src="assets/js/include-partial.js" data-include="partials/footer.html"></script>
     <button class="btn-scroll-top"><i class="mdi mdi-chevron-up"></i></button>
     <script src="assets/js/modernizr-3.6.0.min.js"></script>
@@ -505,6 +337,7 @@
     <script src="assets/js/plugins/parallax.min.js"></script>
     <script src="assets/js/plugins/slick.min.js"></script>
     <script src="assets/js/active.min.js"></script>
+    <script src="assets/js/contact-form.js"></script>
 </body>
 
 </html>
