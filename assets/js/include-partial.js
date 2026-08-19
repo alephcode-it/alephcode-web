@@ -22,7 +22,7 @@
     var root = file.indexOf("../") === 0 ? "../" : "";
     var request = new XMLHttpRequest();
 
-    request.open("GET", file + (file.indexOf("?") === -1 ? "?v=20260819c" : "&v=20260819c"), false);
+    request.open("GET", file + (file.indexOf("?") === -1 ? "?v=20260819e" : "&v=20260819e"), false);
     request.send(null);
 
     if (request.status !== 200 && request.status !== 0) {

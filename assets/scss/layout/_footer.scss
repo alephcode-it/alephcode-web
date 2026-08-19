@@ -61,10 +61,10 @@
   }
 }
 
-$footerAccent: #2563eb;
-$footerInk: #0b1221;
+$footerAccent: $brandColor;
+$footerInk: $headingColor;
 $footerMuted: #5c6573;
-$footerLine: #e6eaf1;
+$footerLine: $borderColor;
 
 .site-footer {
   background: $white;

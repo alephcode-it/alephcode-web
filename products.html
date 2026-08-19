@@ -18,6 +18,77 @@
     <link href="assets/css/slicknav.min.css" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/style.min.css" rel="stylesheet" />
+    <style>
+        .products-page { padding: 70px 0 40px; background: #f8f9fc; }
+        .products-intro { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+        .products-intro h3 { color: #080b1a; font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+        .products-intro p { color: #5c6573; margin: 0; line-height: 1.7; }
+        .product-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card-media {
+            background: #080b1a;
+            border-bottom: 1px solid #eee;
+        }
+        .product-card-media img {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .product-card-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+        .product-card-body h3 { color: #080b1a; font-size: 22px; font-weight: 700; margin: 0 0 10px; }
+        .product-card-body > p { color: #5c6573; line-height: 1.7; margin-bottom: 18px; }
+        .product-card-body ul {
+            list-style: none;
+            margin: 0 0 24px;
+            padding: 0;
+        }
+        .product-card-body li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            color: #151515;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .product-card-body li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 7px;
+            height: 7px;
+            background: #080b1a;
+            border-radius: 50%;
+        }
+        .product-btn {
+            margin-top: auto;
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #080b1a;
+            color: #fff !important;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 22px;
+        }
+        .product-btn:hover { background: #182141; color: #fff !important; }
+        @media (max-width: 767px) {
+            .products-page { padding: 40px 0 20px; }
+            .product-card-media img { height: 180px; }
+        }
+    </style>
 </head>
 
 <body>
@@ -40,19 +111,43 @@
 
     <div class="products-page">
         <div class="container">
+            <div class="products-intro">
+                <h3>Two platforms. One engineering team.</h3>
+                <p>Bizvire is built by AlephCode for operators who need reliable software — not another generic template.</p>
+            </div>
             <div class="row">
-                <div class="col-md-6" id="commerce">
+                <div class="col-lg-6" id="commerce">
                     <article class="product-card">
-                        <h3>Bizvire Commerce</h3>
-                        <p>Commerce and retail management platform for catalogues, orders, and day-to-day store operations. Built to scale from a single outlet to multi-location retail.</p>
-                        <a href="contact.html" class="site-footer-cta-btn">Talk to us &rarr;</a>
+                        <div class="product-card-media">
+                            <img src="assets/img/products/bizvire-commerce.png" alt="Bizvire Commerce dashboard">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>Bizvire Commerce</h3>
+                            <p>Commerce and retail management for catalogues, orders, and day-to-day store operations — from a single outlet to multi-location retail.</p>
+                            <ul>
+                                <li>Catalogues, pricing and stock in one place</li>
+                                <li>Order handling across stores</li>
+                                <li>Built to scale as you add locations</li>
+                            </ul>
+                            <a href="contact.html" class="product-btn">Talk to us &rarr;</a>
+                        </div>
                     </article>
                 </div>
-                <div class="col-md-6" id="stay">
+                <div class="col-lg-6" id="stay">
                     <article class="product-card">
-                        <h3>Bizvire Stay</h3>
-                        <p>Hospitality management platform for properties that need reservations, guest operations, and a reliable digital front desk without a heavy legacy stack.</p>
-                        <a href="contact.html" class="site-footer-cta-btn">Talk to us &rarr;</a>
+                        <div class="product-card-media">
+                            <img src="assets/img/products/bizvire-stay.png" alt="Bizvire Stay front desk dashboard">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>Bizvire Stay</h3>
+                            <p>Hospitality management for properties that need reservations, guest operations, and a reliable digital front desk — without a heavy legacy stack.</p>
+                            <ul>
+                                <li>Reservations and room status at a glance</li>
+                                <li>Guest operations for the front desk</li>
+                                <li>Designed for hotels, inns and stays</li>
+                            </ul>
+                            <a href="contact.html" class="product-btn">Talk to us &rarr;</a>
+                        </div>
                     </article>
                 </div>
             </div>
