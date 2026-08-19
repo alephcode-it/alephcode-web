@@ -6,6 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products | AlephCode Technologies</title>
+    <meta name="description" content="Bizvire Commerce and Bizvire Stay from AlephCode — retail and hospitality platforms for Sri Lankan and regional businesses.">
+    <link rel="canonical" href="https://alephcode.com/products.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AlephCode Technologies">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Products | AlephCode Technologies">
+    <meta property="og:description" content="Bizvire Commerce and Bizvire Stay — retail and hospitality platforms from AlephCode.">
+    <meta property="og:url" content="https://alephcode.com/products.html">
+    <meta property="og:image" content="https://alephcode.com/assets/img/page-header.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Products | AlephCode Technologies">
+    <meta name="twitter:description" content="Bizvire Commerce and Bizvire Stay — retail and hospitality platforms from AlephCode.">
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +27,7 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" />
     <link href="assets/css/helper.min.css" rel="stylesheet" />
-    <link href="assets/css/slicknav.min.css" rel="stylesheet" />
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/style.min.css" rel="stylesheet" />
     <style>
         .products-page { padding: 70px 0 40px; background: #f8f9fc; }
@@ -36,6 +47,7 @@
         .product-card-media {
             background: #080b1a;
             border-bottom: 1px solid #eee;
+            position: relative;
         }
         .product-card-media img {
             display: block;
@@ -43,6 +55,41 @@
             height: 220px;
             object-fit: cover;
             object-position: top center;
+        }
+        .product-gallery a {
+            display: block;
+            position: relative;
+            color: inherit;
+        }
+        .product-gallery .product-shot-extra {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .product-enlarge-hint {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(8, 11, 26, 0.82);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            pointer-events: none;
+        }
+        .product-gallery a:hover img {
+            opacity: 0.92;
         }
         .product-card-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
         .product-card-body h3 { color: #080b1a; font-size: 22px; font-weight: 700; margin: 0 0 10px; }
@@ -101,7 +148,7 @@
                     <div class="col-lg-8 col-xl-6 m-auto text-center">
                         <div class="section-title section-title--light">
                             <h2>Our Products</h2>
-                            <p>Platforms we design and deliver for commerce and hospitality businesses.</p>
+                            <p>Platforms we design and deliver for commerce, retail, and hospitality businesses.</p>
                         </div>
                     </div>
                 </div>
@@ -112,14 +159,20 @@
     <div class="products-page">
         <div class="container">
             <div class="products-intro">
-                <h3>Two platforms. One engineering team.</h3>
+                <h3>Three platforms. One engineering team.</h3>
                 <p>Bizvire is built by AlephCode for operators who need reliable software — not another generic template.</p>
             </div>
             <div class="row">
-                <div class="col-lg-6" id="commerce">
+                <div class="col-lg-4" id="commerce">
                     <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="assets/img/products/bizvire-commerce.png" alt="Bizvire Commerce dashboard">
+                        <div class="product-card-media product-gallery">
+                            <a href="assets/img/products/bizvire-commerce-suppliers.jpg" title="Supplier management">
+                                <img src="assets/img/products/bizvire-commerce.png" alt="Bizvire Commerce dashboard" width="1024" height="560" decoding="async">
+                                <span class="product-enlarge-hint">View screenshots</span>
+                            </a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-commerce-grn.jpg" title="Goods receiving (GRN)"></a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-commerce-roles.jpg" title="Roles and permissions"></a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-commerce-settings.jpg" title="System settings"></a>
                         </div>
                         <div class="product-card-body">
                             <h3>Bizvire Commerce</h3>
@@ -133,18 +186,47 @@
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-6" id="stay">
+                <div class="col-lg-4" id="pos">
                     <article class="product-card">
-                        <div class="product-card-media">
-                            <img src="assets/img/products/bizvire-stay.png" alt="Bizvire Stay front desk dashboard">
+                        <div class="product-card-media product-gallery">
+                            <a href="assets/img/products/bizvire-pos-terminal.jpg" title="POS terminal">
+                                <img src="assets/img/products/bizvire-pos.png" alt="Bizvire POS checkout dashboard" width="1024" height="560" decoding="async">
+                                <span class="product-enlarge-hint">View screenshots</span>
+                            </a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-pos-printing.jpg" title="Printing profiles"></a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-pos-barcode.jpg" title="Barcode settings"></a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-pos-white-label.jpg" title="White label branding"></a>
+                        </div>
+                        <div class="product-card-body">
+                            <h3>Bizvire POS</h3>
+                            <p>In-store checkout and billing for retail counters — fast tickets, payments, and shift control that sit alongside your catalogue and stock.</p>
+                            <ul>
+                                <li>Counter sales, receipts and payments</li>
+                                <li>Registers, shifts and daily close-out</li>
+                                <li>Works with Bizvire Commerce inventory</li>
+                            </ul>
+                            <a href="contact.html" class="product-btn">Talk to us &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4" id="stay">
+                    <article class="product-card">
+                        <div class="product-card-media product-gallery">
+                            <a href="assets/img/products/bizvire-stay-room-rack.jpg" title="Room rack">
+                                <img src="assets/img/products/bizvire-stay.png" alt="Bizvire Stay dashboard" width="1024" height="560" decoding="async">
+                                <span class="product-enlarge-hint">View screenshots</span>
+                            </a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-stay-command-center.jpg" title="Command center"></a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-stay-analytics.jpg" title="Distribution analytics"></a>
+                            <a class="product-shot-extra" href="assets/img/products/bizvire-stay-linen.jpg" title="Linen operations"></a>
                         </div>
                         <div class="product-card-body">
                             <h3>Bizvire Stay</h3>
                             <p>Hospitality management for properties that need reservations, guest operations, and a reliable digital front desk — without a heavy legacy stack.</p>
                             <ul>
-                                <li>Reservations and room status at a glance</li>
-                                <li>Guest operations for the front desk</li>
-                                <li>Designed for hotels, inns and stays</li>
+                                <li>Room rack and live availability</li>
+                                <li>Operations command center across departments</li>
+                                <li>Channel distribution and revenue analytics</li>
                             </ul>
                             <a href="contact.html" class="product-btn">Talk to us &rarr;</a>
                         </div>
@@ -158,15 +240,28 @@
     <button class="btn-scroll-top"><i class="mdi mdi-chevron-up"></i></button>
     <script src="assets/js/modernizr-3.6.0.min.js"></script>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery-migrate.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/plugins/waypoint.min.js"></script>
     <script src="assets/js/plugins/counterup.min.js"></script>
     <script src="assets/js/plugins/jquery.appear.js"></script>
-    <script src="assets/js/plugins/jquery.slicknav.min.js"></script>
-    <script src="assets/js/plugins/parallax.min.js"></script>
+<script src="assets/js/plugins/parallax.min.js"></script>
     <script src="assets/js/plugins/slick.min.js"></script>
+    <script src="assets/js/plugins/magnific-popup.min.js"></script>
     <script src="assets/js/active.min.js"></script>
+    <script>
+        jQuery(function ($) {
+            $(".product-gallery").each(function () {
+                $(this).magnificPopup({
+                    delegate: "a",
+                    type: "image",
+                    gallery: { enabled: true, navigateByImgClick: true },
+                    mainClass: "mfp-fade",
+                    removalDelay: 200,
+                    closeOnContentClick: false
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

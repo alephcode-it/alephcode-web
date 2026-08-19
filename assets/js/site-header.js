@@ -229,4 +229,50 @@
     markActive();
     setHeaderHeight();
     onScroll();
+
+    function onReady(fn) {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn);
+        } else {
+            fn();
+        }
+    }
+
+    function ensureSkipTarget() {
+        var target = document.getElementById("main-content");
+        if (!target) {
+            var node = header.nextElementSibling;
+            while (node && (node.tagName === "SCRIPT" || node.classList.contains("btn-scroll-top"))) {
+                node = node.nextElementSibling;
+            }
+            if (node) {
+                node.id = "main-content";
+                target = node;
+            }
+        }
+        if (target && !target.hasAttribute("tabindex")) {
+            target.setAttribute("tabindex", "-1");
+        }
+    }
+
+    function promotePageHeading() {
+        if (document.querySelector("h1")) {
+            return;
+        }
+        var banner = document.querySelector(".header-area-top .section-title > h2");
+        if (!banner) {
+            return;
+        }
+        var heading = document.createElement("h1");
+        heading.className = banner.className;
+        while (banner.firstChild) {
+            heading.appendChild(banner.firstChild);
+        }
+        banner.parentNode.replaceChild(heading, banner);
+    }
+
+    onReady(function () {
+        ensureSkipTarget();
+        promotePageHeading();
+    });
 }());
