@@ -47,13 +47,15 @@
         /*------------------------------
             03. Responsive Slicknav JS
         --------------------------------*/
-        $('.main-menu').slicknav({
-            appendTo: '.res-mobile-menu',
-            closeOnClick: true,
-            removeClasses: true,
-            closedSymbol: '+',
-            openedSymbol: '-'
-        });
+        if ($('.main-menu').length && $('.res-mobile-menu').length) {
+            $('.main-menu').slicknav({
+                appendTo: '.res-mobile-menu',
+                closeOnClick: true,
+                removeClasses: true,
+                closedSymbol: '+',
+                openedSymbol: '-'
+            });
+        }
 
         const resCanvasWrapper = $(".off-canvas-menu");
         $(".btn-menu").on('click', function () {
@@ -291,10 +293,12 @@
         /*--------------------------
             05. Sticky Header JS
         ----------------------------*/
-        if ($(window).scrollTop() >= 250) {
-            $(".header-area").addClass('sticky');
-        } else {
-            $('.header-area').removeClass('sticky');
+        if (!$('.header-area.site-header').length) {
+            if ($(window).scrollTop() >= 250) {
+                $(".header-area").addClass('sticky');
+            } else {
+                $('.header-area').removeClass('sticky');
+            }
         }
 
         //Scroll top Hide Show
