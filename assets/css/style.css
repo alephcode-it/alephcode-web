@@ -432,9 +432,14 @@ button:focus {
   background-color: #182141;
 }
 .btn-scroll-top.show {
-  bottom: 30px;
+  bottom: 104px;
   opacity: 1;
   visibility: visible;
+}
+@media only screen and (max-width: 767.98px) {
+  .btn-scroll-top.show {
+    bottom: 88px;
+  }
 }
 .blockquote,
 blockquote {

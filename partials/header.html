@@ -6,22 +6,26 @@
   --site-text: #ffffff;
   --site-muted: #CBD5E1;
   --site-header-h: 72px;
-  position: sticky;
+  position: absolute;
+  left: 0;
   top: 0;
+  width: 100%;
   z-index: 1200;
-  background: var(--site-navy);
+  background: transparent;
   padding: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   animation: none;
 }
 .header-area.site-header.sticky {
-  position: sticky;
-  left: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   padding: 0;
   animation: none;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
   background: var(--site-navy);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 .site-header-bar {
   display: flex;

@@ -52,10 +52,18 @@
         .contact-field textarea:focus { border-color: #080b1a; }
         .contact-count { display: block; text-align: right; color: #8a93a3; font-size: 12px; margin-top: 4px; }
         .contact-form-foot {
-            display: flex; flex-wrap: wrap; align-items: center; gap: 16px 20px;
+            display: flex; flex-direction: column; align-items: flex-start; gap: 16px;
             margin-top: 8px; padding-top: 8px;
         }
         .contact-agree { display: flex; align-items: flex-start; gap: 8px; color: #5c6573; font-size: 13px; margin: 0; }
+        .contact-captcha {
+            min-height: 78px; padding: 10px 12px;
+            background: #f8f9fc; border: 1px solid #eee; border-radius: 10px;
+        }
+        .contact-captcha iframe { max-width: 100%; }
+        @media (max-width: 380px) {
+            .contact-captcha { transform: scale(0.92); transform-origin: left top; margin-bottom: -8px; }
+        }
         .contact-agree input { margin-top: 3px; }
         .contact-agree a { color: #080b1a; font-weight: 600; text-decoration: underline; }
         .contact-submit {
@@ -70,8 +78,8 @@
         .contact-status.is-warning { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
         .contact-status.is-error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
         .contact-honey { position: absolute; left: -9999px; height: 0; width: 0; overflow: hidden; }
-        .contact-secure { display: inline-flex; align-items: center; gap: 6px; color: #5c6573; font-size: 12px; margin: 0; }
-        .contact-secure i { font-size: 16px; color: #080b1a; }
+        .contact-secure { color: #5c6573; font-size: 12px; margin: 0; line-height: 1.5; max-width: 42em; }
+        .contact-secure a { color: #080b1a; font-weight: 600; }
         .contact-side { background: #080b1a; color: #c5cad3; display: flex; flex-direction: column; }
         .contact-side-inner { padding: 28px 26px 20px; flex: 1 0 auto; }
         .contact-side h2 { color: #fff; font-size: 22px; font-weight: 700; margin: 0 0 22px; }
@@ -220,10 +228,13 @@
                                 <input type="checkbox" id="contact_privacy" required>
                                 <span>I agree to the <a href="legal.html#privacy">Privacy Policy</a>. <span class="req">*</span></span>
                             </label>
+                            <div class="contact-captcha">
+                                <div id="contact-recaptcha" data-sitekey="6LdTRI4tAAAAAFBzQvAQF9erStxFzok2jA3zmCgO"></div>
+                            </div>
                             <button type="submit" class="contact-submit" id="contact-submit">
                                 Send Message <i class="mdi mdi-send" aria-hidden="true"></i>
                             </button>
-                            <p class="contact-secure"><i class="mdi mdi-shield-check-outline" aria-hidden="true"></i> Protected by reCAPTCHA. You will complete a short security check before the message is sent.</p>
+                            <p class="contact-secure">This site is protected by reCAPTCHA. The Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
                         </div>
                         <div id="message-form" aria-live="polite"></div>
                     </form>
@@ -338,6 +349,7 @@
     <script src="assets/js/plugins/slick.min.js"></script>
     <script src="assets/js/active.min.js"></script>
     <script src="assets/js/contact-form.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onContactRecaptchaLoad&render=explicit" async defer></script>
 </body>
 
 </html>

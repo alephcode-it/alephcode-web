@@ -138,6 +138,54 @@
 @media (max-width: 575px) {
   .site-footer-grid { grid-template-columns: 1fr; }
 }
+.site-whatsapp {
+  position: fixed; z-index: 1100; right: 24px; bottom: 24px;
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 56px; padding: 0 18px 0 8px;
+  background: #25d366; color: #fff !important;
+  border-radius: 999px; text-decoration: none !important;
+  box-shadow: 0 10px 28px rgba(18, 140, 126, 0.32);
+  font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;
+  letter-spacing: 0.01em; transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.site-whatsapp:hover, .site-whatsapp:focus {
+  background: #1ebe57; color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(18, 140, 126, 0.4);
+}
+.site-whatsapp:focus { outline: 2px solid #080b1a; outline-offset: 3px; }
+.site-whatsapp-icon {
+  position: relative; flex: 0 0 40px; width: 40px; height: 40px; border-radius: 50%;
+  background: #fff; color: #25d366;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.site-whatsapp-icon i { font-size: 22px; line-height: 1; }
+.site-whatsapp-icon::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.45);
+  animation: site-whatsapp-pulse 2.6s ease-out infinite;
+}
+.site-whatsapp-text { padding-right: 4px; white-space: nowrap; }
+html.site-nav-lock .site-whatsapp { opacity: 0; visibility: hidden; pointer-events: none; }
+@media (max-width: 767.98px) {
+  .site-whatsapp {
+    right: 16px; bottom: 16px; width: 56px; height: 56px; padding: 0; justify-content: center;
+  }
+  .site-whatsapp-icon { flex-basis: 56px; width: 56px; height: 56px; background: transparent; color: #fff; }
+  .site-whatsapp-icon i { font-size: 28px; }
+  .site-whatsapp-text {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-whatsapp, .site-whatsapp-icon::after { animation: none; transition: none; }
+}
+@media print { .site-whatsapp { display: none !important; } }
+@keyframes site-whatsapp-pulse {
+  0% { transform: scale(0.92); opacity: 0.7; }
+  70% { transform: scale(1.25); opacity: 0; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
 </style>
 <footer class="footer-area site-footer">
     <div class="site-footer-inner">
@@ -284,3 +332,7 @@
         </div>
     </div>
 </footer>
+<a class="site-whatsapp" href="https://wa.me/94766606816?text=Hello%20AlephCode%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" aria-label="Chat with AlephCode on WhatsApp">
+    <span class="site-whatsapp-icon" aria-hidden="true"><i class="fa fa-whatsapp"></i></span>
+    <span class="site-whatsapp-text">Chat with us</span>
+</a>
