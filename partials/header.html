@@ -384,10 +384,6 @@ html.site-nav-lock body {
   overflow: hidden;
 }
 
-@media (max-width: 1199.98px) {
-  .site-header-phone { display: none; }
-}
-
 @media (min-width: 992px) {
   .site-nav-home,
   .site-nav-mobile-actions {
@@ -406,6 +402,22 @@ html.site-nav-lock body {
   }
   .site-header-cta {
     display: none;
+  }
+  .site-header-actions {
+    gap: 8px;
+  }
+  .site-header-actions .site-header-phone {
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 10px 6px 6px;
+    gap: 6px;
+    max-width: calc(100vw - 180px);
+  }
+  .site-header-actions .site-header-phone i {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
   }
   .site-header-toggle {
     display: inline-flex;
@@ -575,6 +587,17 @@ html.site-nav-lock body {
     width: 100%;
     justify-content: center;
     padding: 14px 16px;
+  }
+}
+
+@media (max-width: 379.98px) {
+  .site-header-actions .site-header-phone {
+    font-size: 12px;
+    padding: 6px 8px;
+    letter-spacing: 0;
+  }
+  .site-header-actions .site-header-phone i {
+    display: none;
   }
 }
 </style>
@@ -834,7 +857,7 @@ html.site-nav-lock body {
                 </ul>
 
                 <div class="site-nav-mobile-actions">
-                    <a class="site-header-phone" href="tel:+94766606816">
+                    <a class="site-header-phone" href="tel:+94766606816" aria-label="Call AlephCode +94 766 606 816">
                         <i class="mdi mdi-phone" aria-hidden="true"></i>
                         +94 766 606 816
                     </a>
@@ -843,7 +866,7 @@ html.site-nav-lock body {
             </nav>
 
             <div class="site-header-actions">
-                <a class="site-header-phone" href="tel:+94766606816">
+                <a class="site-header-phone" href="tel:+94766606816" aria-label="Call AlephCode +94 766 606 816">
                     <i class="mdi mdi-phone" aria-hidden="true"></i>
                     +94 766 606 816
                 </a>
