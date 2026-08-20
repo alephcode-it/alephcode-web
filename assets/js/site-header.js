@@ -19,6 +19,9 @@
     }
 
     function setHeaderHeight() {
+        if (header.classList.contains("is-open")) {
+            return;
+        }
         header.style.setProperty("--site-header-h", header.offsetHeight + "px");
     }
 
@@ -77,6 +80,9 @@
     }
 
     function setMobileOpen(open) {
+        if (open) {
+            setHeaderHeight();
+        }
         header.classList.toggle("is-open", open);
         document.documentElement.classList.toggle("site-nav-lock", open);
         if (toggle) {
@@ -92,8 +98,8 @@
         }
         if (!open) {
             closeMenus();
+            setHeaderHeight();
         }
-        setHeaderHeight();
     }
 
     function markActive() {

@@ -399,22 +399,38 @@ html.site-nav-lock body {
   .site-header-bar {
     min-height: 64px;
   }
+  .site-header-logo,
+  .site-header-actions {
+    position: relative;
+    z-index: 3;
+  }
   .site-header-cta {
     display: none;
   }
   .site-header-toggle {
     display: inline-flex;
   }
+  .header-area.site-header.is-open {
+    position: fixed;
+    inset: 0;
+    height: 100%;
+    height: 100dvh;
+    background: var(--site-navy);
+    overflow: hidden;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom: 0;
+  }
   .site-header-backdrop {
     display: block;
-    position: fixed;
+    position: absolute;
     inset: 0;
     background: rgba(8, 11, 26, 0.45);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.18s ease, visibility 0.18s ease;
-    z-index: 1199;
+    z-index: 1;
   }
   .site-header.is-open .site-header-backdrop {
     opacity: 1;
@@ -422,12 +438,14 @@ html.site-nav-lock body {
     pointer-events: auto;
   }
   .site-header-nav {
-    position: fixed;
+    position: absolute;
     top: var(--site-header-h, 64px);
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1202;
+    width: 100%;
+    height: auto;
+    z-index: 2;
     background: var(--site-navy);
     display: flex;
     flex-direction: column;
@@ -838,4 +856,4 @@ html.site-nav-lock body {
     </div>
     <div class="site-header-backdrop" hidden></div>
 </header>
-<script src="[[root]]assets/js/site-header.js?v=20260820a"></script>
+<script src="[[root]]assets/js/site-header.js?v=20260820b"></script>
