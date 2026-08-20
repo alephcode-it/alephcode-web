@@ -2013,8 +2013,8 @@ blockquote-title {
   font-weight: 700;
   font-style: normal;
   text-decoration: none;
-  background-color: #080b1a;
-  border-color: #080b1a;
+  background-color: #1a2b4d;
+  border-color: #1a2b4d;
   border-style: solid;
   border-width: 3px 3px 3px 3px;
   border-radius: 30px 30px 30px 30px;
@@ -2023,8 +2023,8 @@ blockquote-title {
 .tp-caption.Button-Outline-Secondary:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #080b1a;
-  border-color: #080b1a;
+  background-color: #243660;
+  border-color: #243660;
   border-style: solid;
   border-width: 3px 3px 3px 3px;
   border-radius: 30px 30px 30px 30px;

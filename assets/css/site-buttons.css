@@ -1,0 +1,177 @@
+/* Shared navy buttons — does not restyle .site-header-cta */
+.inner-btn,
+.inner-btn-outline,
+.product-btn,
+.careers-btn,
+.careers-btn-outline,
+.contact-submit,
+.site-footer-cta-btn,
+.btn-brand,
+.form-input-item .btn-submit,
+.rev-btn,
+.Button-Outline-Secondary,
+.btn-about {
+  --btn-navy: #1a2b4d;
+  --btn-navy-hover: #243660;
+  position: relative;
+  overflow: hidden !important;
+  isolation: isolate;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+
+.inner-btn,
+.product-btn,
+.careers-btn:not(.careers-btn-outline),
+.contact-submit,
+.site-footer-cta-btn,
+.btn-brand,
+.form-input-item .btn-submit,
+.rev-btn,
+.Button-Outline-Secondary,
+.btn-about {
+  background: var(--btn-navy) !important;
+  background-color: var(--btn-navy) !important;
+  color: #fff !important;
+  border-color: var(--btn-navy) !important;
+  box-shadow: 0 8px 20px rgba(26, 43, 77, 0.22);
+}
+
+.btn-about {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.inner-btn::after,
+.product-btn::after,
+.careers-btn:not(.careers-btn-outline)::after,
+.contact-submit::after,
+.site-footer-cta-btn::after,
+.btn-brand::after,
+.form-input-item .btn-submit::after,
+.rev-btn::after,
+.Button-Outline-Secondary::after,
+.btn-about::after,
+.inner-btn-outline::after,
+.careers-btn-outline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, 0.28) 50%, transparent 75%);
+  transform: translateX(-130%);
+  animation: site-btn-shine 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.inner-btn:hover,
+.inner-btn:focus,
+.product-btn:hover,
+.product-btn:focus,
+.careers-btn:not(.careers-btn-outline):hover,
+.careers-btn:not(.careers-btn-outline):focus,
+.contact-submit:hover,
+.contact-submit:focus,
+.site-footer-cta-btn:hover,
+.site-footer-cta-btn:focus,
+.btn-brand:hover,
+.btn-brand:focus,
+.form-input-item .btn-submit:hover,
+.form-input-item .btn-submit:focus,
+.rev-btn:hover,
+.rev-btn:focus,
+.Button-Outline-Secondary:hover,
+.Button-Outline-Secondary:focus,
+.btn-about:hover,
+.btn-about:focus {
+  background: var(--btn-navy-hover) !important;
+  background-color: var(--btn-navy-hover) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(26, 43, 77, 0.32);
+}
+
+.inner-btn-outline,
+.careers-btn-outline {
+  background: #fff !important;
+  color: var(--btn-navy) !important;
+  border: 1px solid var(--btn-navy) !important;
+  box-shadow: 0 4px 14px rgba(26, 43, 77, 0.08);
+}
+
+.inner-btn-outline:hover,
+.inner-btn-outline:focus,
+.careers-btn-outline:hover,
+.careers-btn-outline:focus {
+  background: #f4f6fb !important;
+  color: var(--btn-navy) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(26, 43, 77, 0.16);
+}
+
+.inner-btn > *,
+.product-btn > *,
+.careers-btn > *,
+.contact-submit > *,
+.site-footer-cta-btn > *,
+.rev-btn > *,
+.Button-Outline-Secondary > *,
+.btn-about > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes site-btn-shine {
+  0%, 72% {
+    transform: translateX(-130%);
+  }
+  88%, 100% {
+    transform: translateX(130%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner-btn,
+  .inner-btn-outline,
+  .product-btn,
+  .careers-btn,
+  .careers-btn-outline,
+  .contact-submit,
+  .site-footer-cta-btn,
+  .btn-brand,
+  .form-input-item .btn-submit,
+  .rev-btn,
+  .Button-Outline-Secondary,
+  .btn-about,
+  .inner-btn::after,
+  .product-btn::after,
+  .careers-btn:not(.careers-btn-outline)::after,
+  .contact-submit::after,
+  .site-footer-cta-btn::after,
+  .btn-brand::after,
+  .form-input-item .btn-submit::after,
+  .rev-btn::after,
+  .Button-Outline-Secondary::after,
+  .btn-about::after,
+  .inner-btn-outline::after,
+  .careers-btn-outline::after {
+    transition: none;
+    animation: none;
+  }
+
+  .inner-btn:hover,
+  .product-btn:hover,
+  .careers-btn:hover,
+  .contact-submit:hover,
+  .site-footer-cta-btn:hover,
+  .rev-btn:hover,
+  .Button-Outline-Secondary:hover,
+  .btn-about:hover {
+    transform: none;
+  }
+}

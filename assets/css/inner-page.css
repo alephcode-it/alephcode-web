@@ -122,7 +122,7 @@ a.inner-tile:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #080b1a;
+  background: #1a2b4d;
   color: #fff !important;
   border-radius: 8px;
   font-size: 14px;
@@ -131,20 +131,10 @@ a.inner-tile:hover {
   text-decoration: none;
 }
 
-.inner-btn:hover {
-  background: #182141;
-  color: #fff !important;
-}
-
 .inner-btn-outline {
   background: #fff;
-  color: #080b1a !important;
-  border: 1px solid #080b1a;
-}
-
-.inner-btn-outline:hover {
-  background: #f8f9fc;
-  color: #080b1a !important;
+  color: #1a2b4d !important;
+  border: 1px solid #1a2b4d;
 }
 
 .inner-faq .accordion-item,
