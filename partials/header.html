@@ -1,0 +1,859 @@
+<style>
+.header-area.site-header {
+  --site-navy: #080b1a;
+  --site-hover: #182141;
+  --site-offwhite: #f8f9fc;
+  --site-text: #ffffff;
+  --site-muted: #CBD5E1;
+  --site-header-h: 72px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1200;
+  background: linear-gradient(180deg, rgba(8, 11, 26, 0.88) 0%, rgba(8, 11, 26, 0.62) 72%, rgba(8, 11, 26, 0.28) 100%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  animation: none;
+}
+.header-area.site-header.sticky {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  animation: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  background: var(--site-navy);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+.site-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: var(--site-header-h);
+  transition: min-height 0.18s ease;
+}
+.header-area.site-header.sticky .site-header-bar {
+  min-height: 64px;
+}
+.site-header-logo {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+.site-header-logo img {
+  display: block;
+  max-height: 34px;
+  width: auto;
+  filter: drop-shadow(0 1px 2px rgba(8, 11, 26, 0.45));
+}
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -120px;
+  z-index: 10000;
+  background: #080b1a;
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(8, 11, 26, 0.35);
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 12px;
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.site-header-logo:focus-visible,
+.site-header-phone:focus-visible,
+.site-header-cta:focus-visible,
+.site-header-toggle:focus-visible,
+.site-nav-item > a:focus-visible,
+.site-nav-trigger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.site-mega a:focus-visible,
+.site-mega-cta:focus-visible {
+  outline: 2px solid var(--site-navy);
+  outline-offset: 2px;
+}
+.site-header-nav {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.site-nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav-item {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  float: none;
+}
+.site-nav-item > a,
+.site-nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--site-text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(8, 11, 26, 0.45);
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: none;
+}
+.site-nav-item > a:hover,
+.site-nav-trigger:hover,
+.site-nav-item.is-active > a,
+.site-nav-item.is-active > .site-nav-trigger {
+  color: #fff;
+}
+.site-nav-item.is-active > a,
+.site-nav-item.is-active > .site-nav-trigger {
+  box-shadow: inset 0 -2px 0 #fff;
+}
+.site-nav-caret {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.8;
+  transition: transform 0.18s ease;
+}
+.site-nav-item.is-open > .site-nav-trigger .site-nav-caret {
+  transform: rotate(180deg);
+}
+.site-mega {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 320px;
+  max-width: min(420px, calc(100vw - 24px));
+  padding: 16px 12px 12px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(8, 11, 26, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 1201;
+  text-align: left;
+}
+.site-mega.is-wide {
+  min-width: 360px;
+}
+.site-nav-item.is-open > .site-mega {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+.site-mega-title {
+  margin: 0 12px 10px;
+  color: #080b1a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.site-mega-list,
+.site-mega-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: none;
+}
+.site-mega-list a {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #151515;
+  text-decoration: none;
+}
+.site-mega-list a:hover {
+  background: var(--site-offwhite);
+  color: #080b1a;
+}
+.site-mega-icon {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--site-offwhite);
+  color: var(--site-navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.site-mega-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.site-mega-copy strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #080b1a;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.site-mega-copy small {
+  color: #5c6573;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.site-mega-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.site-mega-cta {
+  display: inline-flex;
+  align-items: center;
+  margin: 8px 12px 4px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  width: calc(100% - 24px);
+  color: #080b1a;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.site-mega-cta:hover {
+  color: #182141;
+}
+.site-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+.site-header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 7px 12px 7px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.site-header-phone:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+}
+.site-header-phone i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 16px;
+  line-height: 1;
+}
+.site-header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: var(--site-navy);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-header-cta:hover,
+.site-header-cta:focus {
+  background: var(--site-hover);
+  color: #fff;
+}
+.site-header-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.site-header-toggle-bars,
+.site-header-toggle-bars:before,
+.site-header-toggle-bars:after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  position: relative;
+}
+.site-header-toggle-bars:before,
+.site-header-toggle-bars:after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.site-header-toggle-bars:before { top: -6px; }
+.site-header-toggle-bars:after { top: 6px; }
+.site-header.is-open .site-header-toggle-bars { background: transparent; }
+.site-header.is-open .site-header-toggle-bars:before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.site-header.is-open .site-header-toggle-bars:after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+.site-header-backdrop {
+  display: none;
+}
+.site-nav-home,
+.site-nav-mobile-actions {
+  display: none;
+}
+html.site-nav-lock,
+html.site-nav-lock body {
+  overflow: hidden;
+}
+
+@media (max-width: 1199.98px) {
+  .site-header-phone { display: none; }
+}
+
+@media (min-width: 992px) {
+  .site-nav-home,
+  .site-nav-mobile-actions {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .site-header-bar {
+    min-height: 64px;
+  }
+  .site-header-logo,
+  .site-header-actions {
+    position: relative;
+    z-index: 3;
+  }
+  .site-header-cta {
+    display: none;
+  }
+  .site-header-toggle {
+    display: inline-flex;
+  }
+  .header-area.site-header.is-open {
+    position: fixed;
+    inset: 0;
+    height: 100%;
+    height: 100dvh;
+    background: var(--site-navy);
+    overflow: hidden;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom: 0;
+  }
+  .site-header-backdrop {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 11, 26, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.18s ease, visibility 0.18s ease;
+    z-index: 1;
+  }
+  .site-header.is-open .site-header-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .site-header-nav {
+    position: absolute;
+    top: var(--site-header-h, 64px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    background: var(--site-navy);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 8px 0 0;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  }
+  .site-header.is-open .site-header-nav {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+  .site-nav-list {
+    display: block;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 16px 16px;
+  }
+  .site-nav-home {
+    display: block;
+  }
+  .site-nav-item > a,
+  .site-nav-trigger {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 48px;
+    padding: 12px 4px;
+    color: var(--site-text);
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+  }
+  .site-nav-item.is-active > a,
+  .site-nav-item.is-active > .site-nav-trigger {
+    box-shadow: none;
+    color: #fff;
+  }
+  .site-nav-item.is-active > a {
+    box-shadow: inset 3px 0 0 #fff;
+    padding-left: 10px;
+  }
+  .site-nav-caret {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid currentColor;
+    border-right: 0;
+    transform: none;
+  }
+  .site-nav-item.is-open > .site-nav-trigger .site-nav-caret {
+    transform: rotate(90deg);
+  }
+  .site-mega {
+    position: static;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0 0 8px 12px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+    transform: none;
+    display: none;
+  }
+  .site-nav-item.is-open > .site-mega {
+    display: block;
+    pointer-events: auto;
+  }
+  .site-mega-title {
+    display: none;
+  }
+  .site-mega-list a {
+    padding: 10px 4px;
+    min-height: 44px;
+    color: var(--site-muted);
+  }
+  .site-mega-list a:hover {
+    background: transparent;
+    color: #fff;
+  }
+  .site-mega-icon {
+    display: none;
+  }
+  .site-mega-copy small,
+  .site-mega-badge {
+    display: none;
+  }
+  .site-mega-copy strong {
+    color: inherit;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .site-mega-cta {
+    margin: 4px 0 12px;
+    padding: 10px 4px 0;
+    width: auto;
+    border-top: 0;
+    color: #fff;
+  }
+  .site-nav-mobile-actions {
+    display: block;
+    flex: 0 0 auto;
+    margin: 0 16px;
+    padding: 16px 0 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--site-navy);
+  }
+  .site-nav-mobile-actions .site-header-phone {
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: 14px;
+    color: #fff;
+    font-size: 17px;
+    justify-content: center;
+  }
+  .site-nav-mobile-actions .site-header-cta {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    padding: 14px 16px;
+  }
+}
+</style>
+<link rel="stylesheet" href="[[root]]assets/css/site-buttons.css">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="header-area site-header" id="site-header">
+    <div class="container">
+        <div class="site-header-bar">
+            <a class="site-header-logo" href="[[root]]index.html" aria-label="AlephCode Technologies">
+                <img src="[[root]]assets/img/logo.png" alt="AlephCode Technologies">
+            </a>
+
+            <nav class="site-header-nav" id="site-primary-nav" aria-label="Primary">
+                <ul class="site-nav-list">
+                    <li class="site-nav-item site-nav-home">
+                        <a href="[[root]]index.html">Home</a>
+                    </li>
+                    <li class="site-nav-item" data-nav="services">
+                        <a href="[[root]]services/service.html">Services</a>
+                    </li>
+                    <li class="site-nav-item has-menu" data-nav="solutions">
+                        <button type="button" class="site-nav-trigger" aria-expanded="false" aria-controls="mega-solutions" aria-haspopup="true">
+                            Solutions <span class="site-nav-caret" aria-hidden="true"></span>
+                        </button>
+                        <div class="site-mega" id="mega-solutions" role="region" aria-label="Solutions">
+                            <p class="site-mega-title">Solutions</p>
+                            <ul class="site-mega-list">
+                                <li>
+                                    <a href="[[root]]services/erp-solutions.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-domain"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Enterprise Solutions</strong>
+                                            <small>Scalable systems for growing businesses</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]services/it-consulting.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-lightbulb-on-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Digital Transformation</strong>
+                                            <small>Modernize operations and accelerate growth</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]services/erp-solutions.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-cog-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Business Automation</strong>
+                                            <small>Streamline day-to-day operations</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]services/e-commerce-solutions.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-cart-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Commerce Solutions</strong>
+                                            <small>Retail and online commerce platforms</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]products.html#stay">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-hotel"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Hospitality Technology</strong>
+                                            <small>Solutions for hospitality businesses</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]technology.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-cloud-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>SaaS Platforms</strong>
+                                            <small>Product platforms built to scale</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]services/migration-system-upgrades.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-vector-combine"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>System Integration</strong>
+                                            <small>Connect legacy and modern systems</small>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="site-mega-cta" href="[[root]]services/service.html">View all solutions &rarr;</a>
+                        </div>
+                    </li>
+                    <li class="site-nav-item has-menu" data-nav="products">
+                        <button type="button" class="site-nav-trigger" aria-expanded="false" aria-controls="mega-products" aria-haspopup="true">
+                            Products <span class="site-nav-caret" aria-hidden="true"></span>
+                        </button>
+                        <div class="site-mega is-wide" id="mega-products" role="region" aria-label="Products">
+                            <p class="site-mega-title">Products</p>
+                            <ul class="site-mega-list">
+                                <li>
+                                    <a href="[[root]]products.html#commerce">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-storefront-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Bizvire Commerce <span class="site-mega-badge">Featured</span></strong>
+                                            <small>Commerce and retail management platform</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]products.html#pos">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-cash-register"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Bizvire POS <span class="site-mega-badge">Featured</span></strong>
+                                            <small>In-store checkout and billing platform</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]products.html#stay">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-bed"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Bizvire Stay <span class="site-mega-badge">Featured</span></strong>
+                                            <small>Hospitality management platform</small>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="site-mega-cta" href="[[root]]products.html">View all products &rarr;</a>
+                        </div>
+                    </li>
+                    <li class="site-nav-item has-menu" data-nav="technology">
+                        <button type="button" class="site-nav-trigger" aria-expanded="false" aria-controls="mega-technology" aria-haspopup="true">
+                            Technology <span class="site-nav-caret" aria-hidden="true"></span>
+                        </button>
+                        <div class="site-mega" id="mega-technology" role="region" aria-label="Technology">
+                            <p class="site-mega-title">Technology</p>
+                            <ul class="site-mega-list">
+                                <li>
+                                    <a href="[[root]]technology.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-code-braces"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Software Engineering</strong>
+                                            <small>Application design and delivery</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]technology.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-cloud-sync-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Cloud &amp; DevOps</strong>
+                                            <small>Reliable delivery and operations</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]services/it-consulting.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-api"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>API &amp; Integration</strong>
+                                            <small>Connect systems and data flows</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]blog/microservices-architecture.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-sitemap"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Modern Architecture</strong>
+                                            <small>Scalable application architecture</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]technology.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-chart-scatter-plot"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Data &amp; AI</strong>
+                                            <small>Intelligence built into products</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]technology.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-shield-check-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Security</strong>
+                                            <small>Secure by design engineering</small>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="site-mega-cta" href="[[root]]technology.html">Explore technologies &rarr;</a>
+                        </div>
+                    </li>
+                    <li class="site-nav-item has-menu" data-nav="company">
+                        <button type="button" class="site-nav-trigger" aria-expanded="false" aria-controls="mega-company" aria-haspopup="true">
+                            Company <span class="site-nav-caret" aria-hidden="true"></span>
+                        </button>
+                        <div class="site-mega" id="mega-company" role="region" aria-label="Company">
+                            <p class="site-mega-title">Company</p>
+                            <ul class="site-mega-list">
+                                <li>
+                                    <a href="[[root]]about.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-information-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>About AlephCode</strong>
+                                            <small>Who we are and how we work</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]about.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-compass-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Our Approach</strong>
+                                            <small>How we deliver technology programmes</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]careers.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-account-group-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Careers</strong>
+                                            <small>Open roles and how to apply</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]about.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-handshake-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Partners</strong>
+                                            <small>Collaborate with AlephCode</small>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[[root]]contact.html">
+                                        <span class="site-mega-icon" aria-hidden="true"><i class="mdi mdi-email-outline"></i></span>
+                                        <span class="site-mega-copy">
+                                            <strong>Contact Us</strong>
+                                            <small>Start a conversation with our team</small>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="site-mega-cta" href="[[root]]about.html">Learn more about us &rarr;</a>
+                        </div>
+                    </li>
+                    <li class="site-nav-item" data-nav="blog">
+                        <a href="[[root]]blog-list-left-sidebar.html">Blog</a>
+                    </li>
+                </ul>
+
+                <div class="site-nav-mobile-actions">
+                    <a class="site-header-phone" href="tel:+94766606816">
+                        <i class="mdi mdi-phone" aria-hidden="true"></i>
+                        +94 766 606 816
+                    </a>
+                    <a class="site-header-cta" href="[[root]]contact.html">Contact Us <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </nav>
+
+            <div class="site-header-actions">
+                <a class="site-header-phone" href="tel:+94766606816">
+                    <i class="mdi mdi-phone" aria-hidden="true"></i>
+                    +94 766 606 816
+                </a>
+                <a class="site-header-cta" href="[[root]]contact.html">Contact Us <span aria-hidden="true">&rarr;</span></a>
+                <button type="button" class="site-header-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-primary-nav">
+                    <span class="site-header-toggle-bars" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="site-header-backdrop" hidden></div>
+</header>
+<script src="[[root]]assets/js/site-header.js?v=20260820b"></script>

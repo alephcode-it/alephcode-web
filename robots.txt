@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /blog-grid.html
+Disallow: /blog-details.html
+Disallow: /blog-details-with-sidebar.html
+Disallow: /blog-left-sidebar.html
+Disallow: /blog-list-right-sidebar.html
+Disallow: /blog/blog.html
+
+Sitemap: https://alephcode.com/sitemap.xml

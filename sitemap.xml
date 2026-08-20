@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://alephcode.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://alephcode.com/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://alephcode.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://alephcode.com/products.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://alephcode.com/technology.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/services/service.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://alephcode.com/services/web-development.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/services/e-commerce-solutions.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/services/erp-solutions.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/services/it-consulting.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/services/migration-system-upgrades.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/services/maintenance-support.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/team.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://alephcode.com/careers.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://alephcode.com/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://alephcode.com/legal.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://alephcode.com/blog-list-left-sidebar.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://alephcode.com/blog/java-profomance-tuning.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://alephcode.com/blog/spring-boot.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://alephcode.com/blog/microservices-architecture.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://alephcode.com/blog/containerization.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://alephcode.com/blog/continuous-integration.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+</urlset>

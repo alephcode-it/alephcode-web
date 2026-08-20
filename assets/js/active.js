@@ -47,13 +47,15 @@
         /*------------------------------
             03. Responsive Slicknav JS
         --------------------------------*/
-        $('.main-menu').slicknav({
-            appendTo: '.res-mobile-menu',
-            closeOnClick: true,
-            removeClasses: true,
-            closedSymbol: '+',
-            openedSymbol: '-'
-        });
+        if ($('.main-menu').length && $('.res-mobile-menu').length) {
+            $('.main-menu').slicknav({
+                appendTo: '.res-mobile-menu',
+                closeOnClick: true,
+                removeClasses: true,
+                closedSymbol: '+',
+                openedSymbol: '-'
+            });
+        }
 
         const resCanvasWrapper = $(".off-canvas-menu");
         $(".btn-menu").on('click', function () {
@@ -124,38 +126,32 @@
         const form = $('#contact-form');
         const formMessages = $('.form-message');
 
-        $(form).submit(function (e) {
-            e.preventDefault();
-            const formData = form.serialize();
-            $.ajax({
-                type: 'POST',
-                url: form.attr('action'),
-                data: formData
-            }).done(function (response) {
-                // Make sure that the formMessages div has the 'success' class.
-                $(formMessages).removeClass('alert alert-danger');
-                $(formMessages).addClass('alert alert-success fade show');
-
-                // Set the message text.
-                formMessages.html("<button type='button' class='close' data-dismiss='alert'>&times;</button>");
-                formMessages.append(response);
-
-                // Clear the form.
-                $('#contact-form input,#contact-form textarea').val('');
-            }).fail(function (data) {
-                // Make sure that the formMessages div has the 'error' class.
-                $(formMessages).removeClass('alert alert-success');
-                $(formMessages).addClass('alert alert-danger fade show');
-
-                // Set the message text.
-                if (data.responseText !== '') {
+        if (form.length && form.attr('action') && formMessages.length) {
+            $(form).submit(function (e) {
+                e.preventDefault();
+                const formData = form.serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: form.attr('action'),
+                    data: formData
+                }).done(function (response) {
+                    $(formMessages).removeClass('alert alert-danger');
+                    $(formMessages).addClass('alert alert-success fade show');
                     formMessages.html("<button type='button' class='close' data-dismiss='alert'>&times;</button>");
-                    formMessages.append(data.responseText);
-                } else {
-                    $(formMessages).text('Oops! An error occurred and your message could not be sent.');
-                }
+                    formMessages.append(response);
+                    $('#contact-form input,#contact-form textarea').val('');
+                }).fail(function (data) {
+                    $(formMessages).removeClass('alert alert-success');
+                    $(formMessages).addClass('alert alert-danger fade show');
+                    if (data.responseText !== '') {
+                        formMessages.html("<button type='button' class='close' data-dismiss='alert'>&times;</button>");
+                        formMessages.append(data.responseText);
+                    } else {
+                        $(formMessages).text('Oops! An error occurred and your message could not be sent.');
+                    }
+                });
             });
-        });
+        }
 
         /*--------------------------
           10. Magnific Popup JS
@@ -291,10 +287,12 @@
         /*--------------------------
             05. Sticky Header JS
         ----------------------------*/
-        if ($(window).scrollTop() >= 250) {
-            $(".header-area").addClass('sticky');
-        } else {
-            $('.header-area').removeClass('sticky');
+        if (!$('.header-area.site-header').length) {
+            if ($(window).scrollTop() >= 250) {
+                $(".header-area").addClass('sticky');
+            } else {
+                $('.header-area').removeClass('sticky');
+            }
         }
 
         //Scroll top Hide Show

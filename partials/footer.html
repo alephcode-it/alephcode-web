@@ -1,0 +1,344 @@
+<style>
+.site-footer {
+  --footer-navy: #1a2b4d;
+  --footer-navy-hover: #243660;
+  background:#f8f9fc; color:#151515; padding:0; margin-top:0; overflow:hidden;
+  border-top:2px solid var(--footer-navy);
+}
+.site-footer a { text-decoration:none; }
+.site-footer-inner { padding:28px 0 0; }
+.site-footer-cta {
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  padding:22px 28px; border:1px solid #eee; border-radius:12px; background:#fff;
+}
+.site-footer-cta-copy { display:flex; align-items:flex-start; gap:16px; flex:1; min-width:0; }
+.site-footer-cta-icon {
+  flex:0 0 44px; width:44px; height:44px; border:1px solid #eee; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; color:var(--footer-navy); background:#f8f9fc;
+}
+.site-footer-cta h2 { color:var(--footer-navy); font-size:24px; font-weight:700; margin:0 0 6px; line-height:1.25; }
+.site-footer-cta p { margin:0; color:#5c6573; font-size:14px; line-height:1.55; }
+.site-footer-cta-btn {
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:8px;
+  background:var(--footer-navy); color:#fff !important; border-radius:999px; font-size:15px; font-weight:600;
+  padding:12px 24px; white-space:nowrap;
+}
+.site-footer-grid {
+  display:grid;
+  grid-template-columns: minmax(220px, 1.35fr) repeat(5, minmax(0, 1fr));
+  gap: 24px 28px;
+  padding: 22px 0 20px;
+  align-items: start;
+}
+.site-footer-grid > * {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.site-footer-brand .site-footer-logo img { max-width:150px; height:auto; margin-bottom:12px; }
+.site-footer-brand h3 { color:var(--footer-navy); font-size:15px; font-weight:600; margin:0 0 10px; }
+.site-footer-brand p { color:#5c6573; font-size:13px; line-height:1.7; margin:0 0 14px; }
+.site-footer-pills {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.site-footer-pills span {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:8px;
+  width:100%;
+  color:var(--footer-navy);
+  font-size:12px;
+  font-weight:600;
+  line-height:1.2;
+}
+.site-footer-pills span i {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 20px;
+  width:20px;
+  height:20px;
+  color:var(--footer-navy);
+  font-size:16px;
+  line-height:20px;
+  overflow:hidden;
+}
+.site-footer-col h4 {
+  display:block;
+  width:100%;
+  color:var(--footer-navy);
+  font-size:14px;
+  font-weight:700;
+  margin:0 0 14px;
+  padding:0 0 10px;
+  border:0;
+  border-bottom:2px solid var(--footer-navy);
+  line-height:1.3;
+}
+.site-footer-col ul,
+.site-footer-col li {
+  list-style:none; margin:0; padding:0; float:none; clear:both; position:static;
+}
+.site-footer-col li { display:block; margin:0 0 7px; line-height:1.4; }
+.site-footer-col a {
+  display:block; color:#5c6573; font-size:13px; font-weight:500; line-height:1.45;
+  white-space:normal; word-break:break-word;
+}
+.site-footer-col a:hover { color:var(--footer-navy); }
+.site-footer-products li { margin-bottom:12px; }
+.site-footer-products a { display:block; color:var(--footer-navy); font-weight:600; }
+.site-footer-products small { display:block; color:#5c6573; font-size:12px; line-height:1.45; margin-top:3px; }
+.site-footer-more { display:inline-block; margin-top:4px; color:var(--footer-navy) !important; font-size:13px; font-weight:600; }
+.site-footer-contact {
+  display:grid;
+  grid-template-columns: 1.25fr 1.1fr 0.9fr 1fr;
+  gap: 24px 28px;
+  padding: 22px 0;
+  border-top:2px solid var(--footer-navy);
+  align-items:start;
+}
+.site-footer-contact > * { min-width:0; overflow:hidden; }
+.site-footer-contact-item { display:flex; gap:10px; color:#5c6573; font-size:13px; line-height:1.55; }
+.site-footer-contact-item i { color:var(--footer-navy); font-size:18px; flex:0 0 auto; margin-top:2px; }
+.site-footer-contact-item strong { display:block; color:var(--footer-navy); font-size:13px; margin-bottom:2px; }
+.site-footer-contact-item p { margin:0; }
+.site-footer-contact-links { flex-direction:column; gap:8px; }
+.site-footer-contact-links a { display:flex; align-items:center; gap:8px; color:#5c6573; }
+.site-footer-contact-links a:hover { color:var(--footer-navy); }
+.site-footer-social span { display:block; color:var(--footer-navy); font-size:13px; font-weight:600; margin-bottom:10px; }
+.site-footer-social a {
+  width:36px; height:36px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
+  color:#fff !important; font-size:16px; margin-right:6px;
+}
+.site-footer-social a:nth-child(1) { background:#0a66c2; }
+.site-footer-social a:nth-child(2) { background:#1877f2; }
+.site-footer-social a:nth-child(3) { background:#e4405f; }
+.site-footer-social a:nth-child(4) { background:#ff0000; }
+.site-footer-global { display:flex; align-items:center; gap:10px; color:#5c6573; font-size:13px; line-height:1.5; }
+.site-footer-global i { color:var(--footer-navy); font-size:32px; flex:0 0 auto; }
+.site-footer-global p { margin:0; }
+.site-footer-legal { background:var(--footer-navy); color:#c5cad3; padding:16px 0; }
+.site-footer-legal .container { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.site-footer-legal p { margin:0; font-size:12px; }
+.site-footer-legal ul { list-style:none; margin:0; padding:0; }
+.site-footer-legal li { display:inline; }
+.site-footer-legal li:not(:last-child):after { content:"|"; margin:0 10px; color:#6b7380; }
+.site-footer-legal a { color:#c5cad3; font-size:12px; }
+.site-footer-legal a:hover { color:#fff; }
+@media (max-width: 1199px) {
+  .site-footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .site-footer-brand { grid-column: 1 / -1; }
+  .site-footer-contact { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 767px) {
+  .site-footer-cta { flex-direction:column; align-items:flex-start; padding:22px 20px; }
+  .site-footer-cta h2 { font-size:22px; }
+  .site-footer-grid { grid-template-columns: 1fr 1fr; padding:32px 0 20px; }
+  .site-footer-contact { grid-template-columns: 1fr; }
+}
+@media (max-width: 575px) {
+  .site-footer-grid { grid-template-columns: 1fr; }
+}
+.site-whatsapp {
+  position: fixed; z-index: 1100; right: 24px; bottom: 24px;
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 56px; padding: 0 18px 0 8px;
+  background: #25d366; color: #fff !important;
+  border-radius: 999px; text-decoration: none !important;
+  box-shadow: 0 10px 28px rgba(18, 140, 126, 0.32);
+  font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;
+  letter-spacing: 0.01em; transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.site-whatsapp:hover, .site-whatsapp:focus {
+  background: #1ebe57; color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(18, 140, 126, 0.4);
+}
+.site-whatsapp:focus { outline: 2px solid #1a2b4d; outline-offset: 3px; }
+.site-whatsapp-icon {
+  position: relative; flex: 0 0 40px; width: 40px; height: 40px; border-radius: 50%;
+  background: #fff; color: #25d366;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.site-whatsapp-icon i { font-size: 22px; line-height: 1; }
+.site-whatsapp-icon::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.45);
+  animation: site-whatsapp-pulse 2.6s ease-out infinite;
+}
+.site-whatsapp-text { padding-right: 4px; white-space: nowrap; }
+html.site-nav-lock .site-whatsapp { opacity: 0; visibility: hidden; pointer-events: none; }
+@media (max-width: 767.98px) {
+  .site-whatsapp {
+    right: 16px; bottom: 16px; width: 56px; height: 56px; padding: 0; justify-content: center;
+  }
+  .site-whatsapp-icon { flex-basis: 56px; width: 56px; height: 56px; background: transparent; color: #fff; }
+  .site-whatsapp-icon i { font-size: 28px; }
+  .site-whatsapp-text {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-whatsapp, .site-whatsapp-icon::after { animation: none; transition: none; }
+}
+@media print { .site-whatsapp { display: none !important; } }
+@keyframes site-whatsapp-pulse {
+  0% { transform: scale(0.92); opacity: 0.7; }
+  70% { transform: scale(1.25); opacity: 0; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+</style>
+<footer class="footer-area site-footer">
+    <div class="site-footer-inner">
+        <div class="container">
+            <div class="site-footer-cta">
+                <div class="site-footer-cta-copy">
+                    <span class="site-footer-cta-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M3 11.5 21 3l-6.5 18-3.2-6.3L3 11.5z"></path>
+                            <path d="M11.3 14.7 21 3"></path>
+                        </svg>
+                    </span>
+                    <div>
+                        <h2>Let's Build What's Next</h2>
+                        <p>From software engineering to digital platforms, we help businesses turn complex technology challenges into scalable solutions.</p>
+                    </div>
+                </div>
+                <a href="[[root]]contact.html" class="site-footer-cta-btn">Contact Us <span aria-hidden="true">&rarr;</span></a>
+            </div>
+
+            <div class="site-footer-grid">
+                <div class="site-footer-brand">
+                    <a class="site-footer-logo" href="[[root]]index.html">
+                        <img src="[[root]]assets/img/logo-dark.png" alt="AlephCode Technologies">
+                    </a>
+                    <h3>AlephCode Technologies</h3>
+                    <p>We design, build and deliver scalable software solutions that help businesses operate smarter, grow faster and stay competitive in a digital world.</p>
+                    <div class="site-footer-pills">
+                        <span><i class="mdi mdi-code-braces"></i>Engineering</span>
+                        <span><i class="mdi mdi-layers"></i>Platforms</span>
+                        <span><i class="mdi mdi-chart-line"></i>Digital Transformation</span>
+                    </div>
+                </div>
+
+                <nav class="site-footer-col" aria-label="Solutions">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="[[root]]services/erp-solutions.html">Enterprise Solutions</a></li>
+                        <li><a href="[[root]]services/it-consulting.html">Digital Transformation</a></li>
+                        <li><a href="[[root]]technology.html">SaaS Platforms</a></li>
+                        <li><a href="[[root]]services/erp-solutions.html">Business Automation</a></li>
+                        <li><a href="[[root]]products.html#stay">Hospitality Technology</a></li>
+                        <li><a href="[[root]]services/e-commerce-solutions.html">Commerce Solutions</a></li>
+                        <li><a href="[[root]]services/web-development.html">Custom Applications</a></li>
+                        <li><a href="[[root]]services/migration-system-upgrades.html">System Integration</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="site-footer-col" aria-label="Services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="[[root]]services/web-development.html">Software Development</a></li>
+                        <li><a href="[[root]]services/migration-system-upgrades.html">Application Modernization</a></li>
+                        <li><a href="[[root]]technology.html">Cloud Solutions</a></li>
+                        <li><a href="[[root]]services/it-consulting.html">API &amp; System Integration</a></li>
+                        <li><a href="[[root]]services/web-development.html">UI/UX Engineering</a></li>
+                        <li><a href="[[root]]technology.html">DevOps &amp; CI/CD</a></li>
+                        <li><a href="[[root]]services/it-consulting.html">Technical Consulting</a></li>
+                        <li><a href="[[root]]services/maintenance-support.html">Managed Support</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="site-footer-col" aria-label="Products">
+                    <h4>Products</h4>
+                    <ul class="site-footer-products">
+                        <li>
+                            <a href="[[root]]products.html#commerce">Bizvire Commerce</a>
+                            <small>Commerce &amp; retail management platform</small>
+                        </li>
+                        <li>
+                            <a href="[[root]]products.html#pos">Bizvire POS</a>
+                            <small>In-store checkout and billing platform</small>
+                        </li>
+                        <li>
+                            <a href="[[root]]products.html#stay">Bizvire Stay</a>
+                            <small>Hospitality management platform</small>
+                        </li>
+                    </ul>
+                    <a class="site-footer-more" href="[[root]]products.html">Explore all products &rarr;</a>
+                </nav>
+
+                <nav class="site-footer-col" aria-label="Resources">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="[[root]]blog-list-left-sidebar.html">Blog</a></li>
+                        <li><a href="[[root]]faq.html">FAQs</a></li>
+                        <li><a href="[[root]]technology.html">Technology</a></li>
+                        <li><a href="[[root]]services/service.html">Services</a></li>
+                        <li><a href="[[root]]legal.html">Legal</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="site-footer-col" aria-label="Company">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="[[root]]about.html">About Us</a></li>
+                        <li><a href="[[root]]team.html">Our Team</a></li>
+                        <li><a href="[[root]]careers.html">Careers</a></li>
+                        <li><a href="[[root]]about.html">Partners</a></li>
+                        <li><a href="[[root]]blog-list-left-sidebar.html">News &amp; Media</a></li>
+                        <li><a href="[[root]]contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="site-footer-contact">
+                <div class="site-footer-contact-item">
+                    <i class="mdi mdi-map-marker"></i>
+                    <div>
+                        <strong>AlephCode Technologies</strong>
+                        <p>No. 85, In front of Srisumana School,<br>Rathgama, Galle, Sri Lanka</p>
+                    </div>
+                </div>
+                <div class="site-footer-contact-item site-footer-contact-links">
+                    <a href="tel:+94766606816"><i class="mdi mdi-phone"></i> +94 766 606 816</a>
+                    <a href="mailto:info@alephcode.com"><i class="mdi mdi-email-outline"></i> info@alephcode.com</a>
+                    <a href="https://alephcode.com"><i class="mdi mdi-web"></i> alephcode.com</a>
+                </div>
+                <div class="site-footer-social">
+                    <span>Connect with us</span>
+                    <div>
+                        <a href="https://www.linkedin.com/company/alephcode" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                        <a href="https://web.facebook.com/alephcode.IT/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="mdi mdi-facebook"></i></a>
+                        <a href="https://www.instagram.com/alephcode" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="mdi mdi-instagram"></i></a>
+                        <a href="https://www.youtube.com/@alephcode" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="mdi mdi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="site-footer-global">
+                    <i class="mdi mdi-earth"></i>
+                    <p>Serving businesses locally and globally from Sri Lanka.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-footer-legal">
+        <div class="container">
+            <p>&copy; [[year]] AlephCode Technologies. All rights reserved.</p>
+            <ul>
+                <li><a href="[[root]]legal.html#privacy">Privacy Policy</a></li>
+                <li><a href="[[root]]legal.html#terms">Terms of Service</a></li>
+                <li><a href="[[root]]legal.html#cookies">Cookie Policy</a></li>
+                <li><a href="[[root]]legal.html#security">Security</a></li>
+                <li><a href="[[root]]legal.html#accessibility">Accessibility</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<a class="site-whatsapp" href="https://wa.me/94766606816?text=Hello%20AlephCode%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" aria-label="Chat with AlephCode on WhatsApp">
+    <span class="site-whatsapp-icon" aria-hidden="true"><i class="fa fa-whatsapp"></i></span>
+    <span class="site-whatsapp-text">Chat with us</span>
+</a>
